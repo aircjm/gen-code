@@ -12,10 +12,7 @@ import com.gitee.gen.gen.TableDefinition;
 import com.gitee.gen.service.DatasourceConfigService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,31 +29,31 @@ public class DatasourceConfigController {
     @Autowired
     private DatasourceConfigService datasourceConfigService;
 
-    @RequestMapping("/add")
+    @PostMapping("/add")
     public Result add(@RequestBody DatasourceConfig datasourceConfig) {
         datasourceConfigService.insert(datasourceConfig);
         return Action.ok();
     }
 
-    @RequestMapping("/list")
+    @PostMapping("/list")
     public Result list() {
         List<DatasourceConfig> datasourceConfigList = datasourceConfigService.listAll();
         return Action.ok(datasourceConfigList);
     }
 
-    @RequestMapping("/update")
+    @PostMapping("/update")
     public Result update(@RequestBody DatasourceConfig datasourceConfig) {
         datasourceConfigService.update(datasourceConfig);
         return Action.ok();
     }
 
-    @RequestMapping("/del")
+    @PostMapping("/del")
     public Result del(@RequestBody DatasourceConfig datasourceConfig) {
         datasourceConfigService.delete(datasourceConfig);
         return Action.ok();
     }
 
-    @RequestMapping("/table/{id}")
+    @GetMapping("/table/{id}")
     public Result listTable(@PathVariable("id") int id) {
         DatasourceConfig dataSourceConfig = datasourceConfigService.getById(id);
         GeneratorConfig generatorConfig = GeneratorConfig.build(dataSourceConfig);
@@ -66,7 +63,7 @@ public class DatasourceConfigController {
     }
 
 
-    @RequestMapping("/test")
+    @PostMapping("/test")
     public Result test(@RequestBody DatasourceConfig datasourceConfig) {
         String error = DBConnect.testConnection(GeneratorConfig.build(datasourceConfig));
         if (error != null) {
@@ -75,7 +72,7 @@ public class DatasourceConfigController {
         return Action.ok();
     }
 
-    @RequestMapping("/dbtype")
+    @PostMapping("/dbtype")
     public Result dbType(@RequestBody DatasourceConfig datasourceConfig) {
         List<DbTypeShow> dbTypeShowList = Stream.of(DbType.values())
                 .map(dbType -> new DbTypeShow(dbType.getDisplayName(), dbType.getType()))

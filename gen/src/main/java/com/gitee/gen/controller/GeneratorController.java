@@ -9,6 +9,7 @@ import com.gitee.gen.service.DatasourceConfigService;
 import com.gitee.gen.service.GeneratorService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,7 +34,7 @@ public class GeneratorController {
      * @param generatorParam 生成参数
      * @return 返回代码内容
      */
-    @RequestMapping("/code")
+    @PostMapping("/code")
     public Result code(@RequestBody GeneratorParam generatorParam) {
         int datasourceConfigId = generatorParam.getDatasourceConfigId();
         DatasourceConfig datasourceConfig = datasourceConfigService.getById(datasourceConfigId);

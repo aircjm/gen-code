@@ -10,10 +10,7 @@ import com.gitee.gen.util.TemplateMetaUtils;
 import io.swagger.annotations.Api;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -33,18 +30,18 @@ public class TemplateConfigController {
     @Autowired
     private TemplateGroupService templateGroupService;
 
-    @RequestMapping("/add")
+    @PostMapping("/add")
     public Result add(@RequestBody TemplateConfig templateConfig) {
         templateConfigService.insert(templateConfig);
         return Action.ok(templateConfig);
     }
 
-    @RequestMapping("/get/{id}")
+    @GetMapping("/get/{id}")
     public Result get(@PathVariable("id") int id) {
         return Action.ok(templateConfigService.getById(id));
     }
 
-    @RequestMapping("/list")
+    @PostMapping("/list")
     public Result list(String groupId) {
         List<TemplateConfig> templateConfigs = null;
         if(StringUtils.isEmpty(groupId)){
@@ -66,25 +63,25 @@ public class TemplateConfigController {
         return Action.ok(templateConfigs);
     }
 
-    @RequestMapping("/update")
+    @PostMapping("/update")
     public Result update(@RequestBody TemplateConfig templateConfig) {
         templateConfigService.update(templateConfig);
         return Action.ok();
     }
 
-    @RequestMapping("/del")
+    @PostMapping("/del")
     public Result del(@RequestBody TemplateConfig templateConfig) {
         templateConfigService.delete(templateConfig);
         return Action.ok();
     }
 
-    @RequestMapping("/save")
+    @PostMapping("/save")
     public Result save(@RequestBody TemplateConfig templateConfig) {
         templateConfigService.save(templateConfig);
         return Action.ok();
     }
 
-    @RequestMapping("/copy")
+    @PostMapping("/copy")
     public Result copy(@RequestBody TemplateConfig templateConfig) {
         templateConfigService.copy(templateConfig);
         return Action.ok();

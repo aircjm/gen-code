@@ -6,10 +6,7 @@ import com.gitee.gen.entity.TemplateGroup;
 import com.gitee.gen.service.TemplateGroupService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Objects;
@@ -32,7 +29,7 @@ public class TemplateGroupController {
      *
      * @return 返回集合，没有返回空List
      */
-    @RequestMapping("list")
+    @PostMapping("list")
     public Result listAll() {
         List<TemplateGroup> templateGroups = templateGroupService.listAll();
         return Action.ok(templateGroups);
@@ -45,7 +42,7 @@ public class TemplateGroupController {
      * @param id 主键
      * @return 返回记录，没有返回null
      */
-    @RequestMapping("get/{id}")
+    @GetMapping("get/{id}")
     public Result get(@PathVariable("id") int id) {
         TemplateGroup group = templateGroupService.getById(id);
         return Action.ok(group);
@@ -57,7 +54,7 @@ public class TemplateGroupController {
      * @param templateGroup 新增的记录
      * @return 返回影响行数
      */
-    @RequestMapping("add")
+    @PostMapping("add")
     public Result insert(@RequestBody TemplateGroup templateGroup) {
         TemplateGroup group = templateGroupService.getByName(templateGroup.getGroupName());
         if (group != null) {
@@ -73,7 +70,7 @@ public class TemplateGroupController {
      * @param templateGroup 修改的记录
      * @return 返回影响行数
      */
-    @RequestMapping("update")
+    @PostMapping("update")
     public Result update(@RequestBody TemplateGroup templateGroup) {
         TemplateGroup group = templateGroupService.getByName(templateGroup.getGroupName());
         if (group != null && !Objects.equals(group.getId(), templateGroup.getId())) {
@@ -89,7 +86,7 @@ public class TemplateGroupController {
      * @param templateGroup 待删除的记录
      * @return 返回影响行数
      */
-    @RequestMapping("del")
+    @PostMapping("del")
     public Result delete(@RequestBody TemplateGroup templateGroup) {
         templateGroupService.deleteGroup(templateGroup);
         return Action.ok();

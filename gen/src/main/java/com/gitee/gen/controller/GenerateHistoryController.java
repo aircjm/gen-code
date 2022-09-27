@@ -12,6 +12,7 @@ import com.gitee.gen.service.DatasourceConfigService;
 import com.gitee.gen.service.GenerateHistoryService;
 import com.gitee.gen.service.TemplateConfigService;
 import io.swagger.annotations.Api;
+import oracle.jdbc.proxy.annotation.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,7 +39,7 @@ public class GenerateHistoryController {
      *
      * @return 返回集合，没有返回空List
      */
-    @RequestMapping("list")
+    @PostMapping("list")
     public Result listAll() {
         List<GenerateHistory> generateHistories = generateHistoryService.listAll();
         List<GenerateHistoryVO> generateHistoryVOS = generateHistories.stream()
