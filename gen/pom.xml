@@ -92,6 +92,14 @@
             <version>1.6.1</version>
         </dependency>
 
+        <!-- hutool -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.8.7</version>
+        </dependency>
+
+
         <!--引入Knife4j的官方start包,Swagger2基于Springfox2.10.5项目-->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>

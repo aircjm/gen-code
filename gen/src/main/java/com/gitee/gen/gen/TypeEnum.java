@@ -7,6 +7,7 @@ package com.gitee.gen.gen;
  */
 public enum TypeEnum {
 
+    // 统一类型枚举
     BIT("bit"),
 
     BOOLEAN("boolean"),

@@ -1,10 +1,12 @@
 package com.gitee.gen.gen;
 
 /**
+ * 数据库类型
  * @author tanghc
  */
 public enum DbType {
 
+    //  数据库类型
     MYSQL(1,
             "MySQL",
             "com.mysql.cj.jdbc.Driver",
