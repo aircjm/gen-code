@@ -1,0 +1,8 @@
+{
+    "rewrites": [
+        {
+            "source": "/api/:path*",
+            "destination": "https://dc22-141-11-108-8.ngrok.io/:path*"
+        }
+    ]
+}
