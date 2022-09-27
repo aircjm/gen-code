@@ -1,8 +1,9 @@
-import { Button } from "@douyinfe/semi-ui";
-import React, { useEffect, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
-import { request } from "../../api/request";
-
+import {Button} from "@douyinfe/semi-ui";
+import React, {useEffect, useState} from "react";
+import {Link, Outlet} from "react-router-dom";
+import {request} from "../../api/request";
+import {APIURL, datasourceList} from "../../api/api";
+import {AxiosResponse} from "axios";
 
 
 export interface UserState {
@@ -12,24 +13,18 @@ export interface UserState {
     phone: string;
     role: number;
     id: number;
-  }
+}
+
 
 function Datasource() {
 
-
-    const [str, setStr] = useState({})
-
-
+    const [str, setStr] = useState<any>()
     useEffect(() => {
-         request<UserState>({
-            url: "/zhb-grid-active/detail?id=1",
-            method: "get"
-        }).then((data) => {
+        datasourceList().then((data: AxiosResponse) => {
+            console.log(data)
             setStr(data)
         });
-    }, []) 
-
-
+    }, [])
 
     return (
         <div>
