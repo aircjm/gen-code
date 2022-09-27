@@ -10,6 +10,7 @@ import com.gitee.gen.gen.SQLService;
 import com.gitee.gen.gen.SQLServiceFactory;
 import com.gitee.gen.gen.TableDefinition;
 import com.gitee.gen.service.DatasourceConfigService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,6 +24,7 @@ import java.util.stream.Stream;
 /**
  * @author tanghc
  */
+@Api(tags = "数据源配置管理")
 @RestController
 @RequestMapping("datasource")
 public class DatasourceConfigController {

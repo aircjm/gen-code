@@ -7,6 +7,7 @@ import com.gitee.gen.entity.TemplateGroup;
 import com.gitee.gen.service.TemplateConfigService;
 import com.gitee.gen.service.TemplateGroupService;
 import com.gitee.gen.util.TemplateMetaUtils;
+import io.swagger.annotations.Api;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,7 @@ import java.util.stream.Collectors;
 /**
  * @author tanghc
  */
+@Api(tags = "模版配置")
 @RestController
 @RequestMapping("template")
 public class TemplateConfigController {

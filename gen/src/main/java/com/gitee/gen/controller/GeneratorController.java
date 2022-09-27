@@ -7,6 +7,7 @@ import com.gitee.gen.entity.DatasourceConfig;
 import com.gitee.gen.gen.GeneratorConfig;
 import com.gitee.gen.service.DatasourceConfigService;
 import com.gitee.gen.service.GeneratorService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @author tanghc
  */
+@Api(tags = "生成代码")
 @RestController
 @RequestMapping("generate")
 public class GeneratorController {

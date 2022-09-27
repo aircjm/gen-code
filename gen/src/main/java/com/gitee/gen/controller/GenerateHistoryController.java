@@ -11,15 +11,15 @@ import com.gitee.gen.entity.TemplateConfig;
 import com.gitee.gen.service.DatasourceConfigService;
 import com.gitee.gen.service.GenerateHistoryService;
 import com.gitee.gen.service.TemplateConfigService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-
+@Api(tags = "代码生成历史")
 @RestController
 @RequestMapping("history")
 public class GenerateHistoryController {

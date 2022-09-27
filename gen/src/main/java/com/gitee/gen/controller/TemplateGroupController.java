@@ -4,6 +4,7 @@ import com.gitee.gen.common.Action;
 import com.gitee.gen.common.Result;
 import com.gitee.gen.entity.TemplateGroup;
 import com.gitee.gen.service.TemplateGroupService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +19,7 @@ import java.util.Objects;
  * @date Date : 2020-12-15 9:51
  * @Description: TODO
  */
+@Api(tags = "模版分组")
 @RestController
 @RequestMapping("group")
 public class TemplateGroupController {
