@@ -2,13 +2,7 @@ import axios, {AxiosRequestConfig, AxiosError, AxiosResponse} from 'axios';
 import AdminConfig from '../config';
 import {getToken} from '../utils/cookies';
 import {Notification} from '@douyinfe/semi-ui';
-
-
-interface ResponseData<T> {
-    code: number;
-    data: T;
-    msg: string;
-}
+import {ResponseData} from "../models";
 
 // 指定 axios 请求类型
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';

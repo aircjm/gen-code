@@ -98,8 +98,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/datasource" element={<Datasource />}>
-          <Route path="edit" element={<Address />}></Route>
+
         </Route>
+          <Route path="/datasource/edit" element={<DatasourceEdit />}></Route>
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />}>
           <Route index element={<ContactIndex />}></Route>
