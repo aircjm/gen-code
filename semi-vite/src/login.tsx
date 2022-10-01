@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Card, Form, Space, useFormApi, Avatar, Toast, Tooltip } from '@douyinfe/semi-ui';
 import { IconLock, IconUser } from '@douyinfe/semi-icons';
 import { Link, useLocation, useNavigate, useRoutes } from 'react-router-dom';
+import {FormattedMessage} from "./locale";
 
 
 export default function Login() {
@@ -31,7 +32,7 @@ export default function Login() {
         </Link>
         <Tooltip>
           <Button theme="solid" type="primary" htmlType="submit" loading={loading}>
-            signIn
+            <FormattedMessage id={"page.login.title"}/>
           </Button>
         </Tooltip>
       </Space>

@@ -1,9 +1,14 @@
 import './App.css'
 import {Button} from '@douyinfe/semi-ui'
-import {Link, Outlet, Route, Routes, useParams} from 'react-router-dom'
+import {BrowserRouter, Link, Outlet, Route, Routes, useParams} from 'react-router-dom'
 import DatasourceEdit from './pages/datasource/Edit'
 import Datasource from "./pages/datasource/List";
-
+import { LocaleProvider } from '@douyinfe/semi-ui'
+import { IntlProvider } from 'react-intl'
+import zh_CN from '@douyinfe/semi-ui/lib/es/locale/source/zh_CN'
+import en_GB from '@douyinfe/semi-ui/lib/es/locale/source/en_GB'
+import {useMemo} from "react";
+import {Locales, messages} from "./locale";
 
 function Nav() {
     return (
@@ -89,29 +94,48 @@ function NotFound() {
 }
 
 function App() {
+    const locale = Locales.ZH_CN
+
+    const getLocale = useMemo(() => {
+        // if (locale === 'en_GB') {
+        //     return en_GB
+        // } else if (locale === 'zh_CN') {
+        //     return zh_CN
+        // }
+        return zh_CN
+    }, [locale])
+
+
+
     return (
-        <div className="App">
-            <div>
-                <h1>Header!</h1>
-            </div>
-            <Routes>
-                <Route path="/" element={<Home/>}/>
-                <Route path="/datasource" element={<Datasource/>}></Route>
-                <Route path="/datasource/edit" element={<DatasourceEdit/>}></Route>
-                <Route path="/about" element={<About/>}/>
-                <Route path="/contact" element={<Contact/>}>
-                    <Route index element={<ContactIndex/>}></Route>
-                    <Route path="address" element={<Address/>}></Route>
-                    <Route path="*" element={<NotFound/>}/>
-                    <Route path="phone" element={<Phone/>}></Route>
-                </Route>
-                <Route path="/article/:id/*" element={<Article/>}/>
-                <Route path="*" element={<NotFound/>}/>
-            </Routes>
-            <div>
-                <h1>Footer!</h1>
-            </div>
-        </div>
+        <LocaleProvider locale={getLocale}>
+            <IntlProvider locale={locale.split('_')[0]} messages={messages[locale].app} defaultLocale={Locales.ZH_CN}>
+                <BrowserRouter>
+                    <div className="App">
+                        <div>
+                            <h1>Header!</h1>
+                        </div>
+                        <Routes>
+                            <Route path="/" element={<Home/>}/>
+                            <Route path="/datasource" element={<Datasource/>}></Route>
+                            <Route path="/datasource/edit" element={<DatasourceEdit/>}></Route>
+                            <Route path="/about" element={<About/>}/>
+                            <Route path="/contact" element={<Contact/>}>
+                                <Route index element={<ContactIndex/>}></Route>
+                                <Route path="address" element={<Address/>}></Route>
+                                <Route path="*" element={<NotFound/>}/>
+                                <Route path="phone" element={<Phone/>}></Route>
+                            </Route>
+                            <Route path="/article/:id/*" element={<Article/>}/>
+                            <Route path="*" element={<NotFound/>}/>
+                        </Routes>
+                        <div>
+                            <h1>Footer!</h1>
+                        </div>
+                    </div>
+                </BrowserRouter>
+            </IntlProvider>
+        </LocaleProvider>
     )
 }
 

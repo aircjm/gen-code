@@ -1,5 +1,6 @@
 import {Toast, Space, Form, Button, Notification} from "@douyinfe/semi-ui";
 import React, {useState} from "react";
+import {FormattedMessage} from "../../locale";
 
 function DatasourceEdit() {
 
@@ -7,14 +8,14 @@ function DatasourceEdit() {
     const handleSubmit = (values: any) => {
         console.log(values);
         Notification.info({content: '表单已提交'});
-
     };
 
-    const [login, setLogin] = useState({})
+    const [loading, setLoading] = useState<boolean>(false)
+    const [initValue, setInitValues] = useState({})
 
     return (
         <Space align="start" wrap spacing={20}>
-            <Form onSubmit={values => handleSubmit(values)} initValues={login}>
+            <Form onSubmit={values => handleSubmit(values)} initValues={initValue}>
                 {({formState, values, formApi}) => (
                     <>
                         <Form.Input field='name' label='名称' style={{width: '100%'}}></Form.Input>
@@ -33,7 +34,7 @@ function DatasourceEdit() {
                                     mode="password"></Form.Input>
 
                         <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                            <Button htmlType='submit' type="tertiary">submit</Button>
+                            <Button htmlType='submit' type="tertiary" loading={loading}> <FormattedMessage id={"submit"}/></Button>
                         </div>
                     </>
                 )}
