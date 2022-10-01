@@ -1,13 +1,17 @@
-import {Toast, Space, Form, Button, Notification} from "@douyinfe/semi-ui";
+import {Button, Form, Notification, Space} from "@douyinfe/semi-ui";
 import React, {useState} from "react";
 import {FormattedMessage} from "../../locale";
+import {useNavigate} from "react-router-dom";
 
 function DatasourceEdit() {
-
+    const navigate = useNavigate();
 
     const handleSubmit = (values: any) => {
+        setLoading(true);
         console.log(values);
         Notification.info({content: '表单已提交'});
+        setLoading(false);
+        navigate('/datasource');
     };
 
     const [loading, setLoading] = useState<boolean>(false)
