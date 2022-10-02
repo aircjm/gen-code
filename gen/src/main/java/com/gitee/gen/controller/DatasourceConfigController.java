@@ -35,6 +35,13 @@ public class DatasourceConfigController {
         return Action.ok();
     }
 
+
+    @GetMapping("/detail")
+    public Result detail(@RequestParam Integer id) {
+        DatasourceConfig datasourceConfig = datasourceConfigService.getById(id);
+        return Action.ok(datasourceConfig);
+    }
+
     @PostMapping("/list")
     public Result list() {
         List<DatasourceConfig> datasourceConfigList = datasourceConfigService.listAll();

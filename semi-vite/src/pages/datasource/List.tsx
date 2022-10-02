@@ -1,16 +1,9 @@
-import {Avatar, Button, Col, Row, Table} from "@douyinfe/semi-ui";
+import {Button, Col, Row, Table} from "@douyinfe/semi-ui";
 import React, {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {datasourceList} from "../../api/api";
 import {AxiosResponse} from "axios";
-import {format} from "date-fns";
-import {PageRequest} from "../../models";
-import {IconPlus} from "@douyinfe/semi-icons";
-
-
-export interface ListRequestState extends PageRequest {
-    name: string;
-}
+import {IconEdit, IconMore, IconPlus} from "@douyinfe/semi-icons";
 
 
 function Datasource() {
@@ -19,6 +12,9 @@ function Datasource() {
     const [loading, setLoading] = useState(false);
     const [currentPage, setPage] = useState(1);
     const [total, setTotal] = useState();
+
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         setLoading(true);
@@ -65,6 +61,19 @@ function Datasource() {
             title: 'JDBC驱动类',
             dataIndex: 'driverClass',
         },
+        {
+            title: '',
+            dataIndex: 'operate',
+            render: (text:string, record: any) =>
+                (
+                    <div>
+                        <Button icon={<IconEdit />} theme='borderless' onClick={() => {
+                            navigate("/datasource/edit"+"?id=" +record.id)
+                        }} />
+                        <Button icon={ <IconMore />} theme='borderless' onClick={() => alert(record.id)} />
+                    </div>
+                )
+        }
         // {
         //     title: '更新日期',
         //     dataIndex: 'updateTime',
