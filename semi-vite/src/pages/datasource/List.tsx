@@ -1,10 +1,11 @@
-import {Avatar, Button, Table} from "@douyinfe/semi-ui";
+import {Avatar, Button, Col, Row, Table} from "@douyinfe/semi-ui";
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {datasourceList} from "../../api/api";
 import {AxiosResponse} from "axios";
 import {format} from "date-fns";
 import {PageRequest} from "../../models";
+import {IconPlus} from "@douyinfe/semi-icons";
 
 
 export interface ListRequestState extends PageRequest {
@@ -20,22 +21,22 @@ function Datasource() {
     const [total, setTotal] = useState();
 
     useEffect(() => {
+        setLoading(true);
         datasourceList().then((response: AxiosResponse) => {
-            console.log(response)
             setData(response.data)
+            setLoading(false);
         });
 
     }, [])
 
     const columns = [
         {
-            title: '标题',
+            title: '数据库名称',
             dataIndex: 'dbName',
             width: 400,
             render: (text: string, record: any, index: number) => {
                 return (
                     <div>
-                        <Avatar size="small" shape="square" style={{marginRight: 12}}></Avatar>
                         {text}
                     </div>
                 );
@@ -80,15 +81,20 @@ function Datasource() {
     };
 
     return (
-        <div>
+        <div className="grid">
             <h2>数据源管理</h2>
-            <Button><Link to="edit">新增</Link></Button>
-            <Table columns={columns} dataSource={dataSource} loading={loading} pagination={{
-                currentPage,
-                pageSize: 5,
-                total: 100,
-                onPageChange: handlePageChange
-            }}></Table>
+            <Row>
+                <Col span={4} offset={20}>
+                    <Button icon={<IconPlus />} type={"primary"}><Link to="edit">新增</Link></Button></Col>
+            </Row>
+            <Row>
+                <Table columns={columns} dataSource={dataSource} loading={loading} pagination={{
+                    currentPage,
+                    pageSize: 5,
+                    total: 100,
+                    onPageChange: handlePageChange
+                }}></Table>
+            </Row>
 
         </div>
     )
