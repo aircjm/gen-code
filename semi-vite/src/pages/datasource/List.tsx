@@ -10,9 +10,6 @@ function Datasource() {
 
     const [dataSource, setData] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [currentPage, setPage] = useState(1);
-    const [total, setTotal] = useState();
-
 
     const navigate = useNavigate();
 
@@ -29,25 +26,7 @@ function Datasource() {
         {
             title: '数据库名称',
             dataIndex: 'dbName',
-            width: 400,
-            render: (text: string, record: any, index: number) => {
-                return (
-                    <div>
-                        {text}
-                    </div>
-                );
-            },
-            filters: [
-                {
-                    text: 'Semi Design 设计稿',
-                    value: 'Semi Design 设计稿',
-                },
-                {
-                    text: 'Semi Pro 设计稿',
-                    value: 'Semi Pro 设计稿',
-                },
-            ],
-            onFilter: (value: any, record: any) => record.name.includes(value),
+            width: 400
         },
         {
             title: 'ip',
@@ -97,12 +76,7 @@ function Datasource() {
                     <Button icon={<IconPlus />} type={"primary"}><Link to="edit">新增</Link></Button></Col>
             </Row>
             <Row>
-                <Table columns={columns} dataSource={dataSource} loading={loading} pagination={{
-                    currentPage,
-                    pageSize: 5,
-                    total: 100,
-                    onPageChange: handlePageChange
-                }}></Table>
+                <Table columns={columns} dataSource={dataSource} loading={loading}></Table>
             </Row>
 
         </div>
