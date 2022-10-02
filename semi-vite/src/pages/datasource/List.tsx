@@ -7,16 +7,6 @@ import {format} from "date-fns";
 import {PageRequest} from "../../models";
 
 
-export interface UserState {
-    token: string;
-    avatar: string | undefined;
-    name: string;
-    phone: string;
-    role: number;
-    id: number;
-}
-
-
 export interface ListRequestState extends PageRequest {
     name: string;
 }
