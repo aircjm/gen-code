@@ -1,8 +1,8 @@
 export type DataSourceAddRequest = {
     dbType: number
     desc: string
-    ip: string
-    name: string,
+    host: string
+    dbName: string,
     password: string
     port: number
     url: string

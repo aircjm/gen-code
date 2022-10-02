@@ -1,7 +1,7 @@
 import axios, {AxiosRequestConfig, AxiosError, AxiosResponse} from 'axios';
 import AdminConfig from '../config';
 import {getToken} from '../utils/cookies';
-import {Notification} from '@douyinfe/semi-ui';
+import {Modal, Notification} from '@douyinfe/semi-ui';
 import {ResponseData} from "../models";
 
 // 指定 axios 请求类型
@@ -36,19 +36,19 @@ axios.interceptors.response.use(
 
         // 登录已过期或者未登录
         if (response.data.code === 1000) {
-            //   Modal.confirm({
-            //     title: '系统提示',
-            //     content: response.data.msg,
-            //     okText: '重新登录',
-            //     onOk() {
-            //       store.dispatch(clearSideBarRoutes());
-            //       store.dispatch(logout());
-            //       window.location.href = `${
-            //         window.location.origin
-            //       }/react-ant-admin/system/login?redirectURL=${encodeURIComponent(window.location.href)}`;
-            //     },
-            //     onCancel() {},
-            //   });
+              Modal.confirm({
+                title: '系统提示',
+                content: response.data.msg,
+                okText: '重新登录',
+                onOk() {
+                  // store.dispatch(clearSideBarRoutes());
+                  // store.dispatch(logout());
+                  window.location.href = `${
+                    window.location.origin
+                  }/login?redirectURL=${encodeURIComponent(window.location.href)}`;
+                },
+                onCancel() {},
+              });
             return Promise.reject(new Error(response.data.msg));
         }
 

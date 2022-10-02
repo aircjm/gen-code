@@ -30,7 +30,7 @@ function Datasource() {
     const columns = [
         {
             title: '标题',
-            dataIndex: 'name',
+            dataIndex: 'dbName',
             width: 400,
             render: (text: string, record: any, index: number) => {
                 return (
@@ -53,33 +53,25 @@ function Datasource() {
             onFilter: (value: any, record: any) => record.name.includes(value),
         },
         {
-            title: '大小',
-            dataIndex: 'size',
-            sorter: (a: any, b: any) => a.size - b.size > 0 ? 1 : -1,
-            render: (text: string) => `${text} KB`
+            title: 'ip',
+            dataIndex: 'host'
         },
         {
-            title: '所有者',
-            dataIndex: 'owner',
-            render: (text: string, record: any, index: number) => {
-                return (
-                    <div>
-                        <Avatar size="small" color={record.avatarBg}
-                                style={{marginRight: 4}}>{typeof text === 'string' && text.slice(0, 1)}</Avatar>
-                        {text}
-                    </div>
-                );
-            }
-
+            title: '端口',
+            dataIndex: 'port'
         },
         {
-            title: '更新日期',
-            dataIndex: 'updateTime',
-            sorter: (a: any, b: any) => a.updateTime - b.updateTime > 0 ? 1 : -1,
-            render: (value: any) => {
-                return format(new Date(value), 'yyyy-MM-dd');
-            }
-        }
+            title: 'JDBC驱动类',
+            dataIndex: 'driverClass',
+        },
+        // {
+        //     title: '更新日期',
+        //     dataIndex: 'updateTime',
+        //     sorter: (a: any, b: any) => a.updateTime - b.updateTime > 0 ? 1 : -1,
+        //     render: (value: any) => {
+        //         return format(new Date(value), 'yyyy-MM-dd');
+        //     }
+        // }
     ];
 
 
