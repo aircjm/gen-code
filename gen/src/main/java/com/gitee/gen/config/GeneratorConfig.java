@@ -39,28 +39,28 @@ public class GeneratorConfig implements WebMvcConfigurer {
     }
 
 
-    /**
-     * 配置静态资源
-     * @param registry
-     */
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        String frontRoot;
-        if (StringUtils.hasText(frontLocation)) {
-            frontRoot = StringUtils.trimTrailingCharacter(frontLocation, '/');
-        } else {
-            String homeDir = SystemUtil.getBinPath();
-            if ("/".equals(homeDir)) {
-                homeDir = "";
-            }
-            frontRoot = homeDir + "/view";
-        }
-        log.info("前端资源目录：{}", frontRoot);
-        String frontLocation = "file:" + frontRoot;
-        registry.addResourceHandler("/index.html").addResourceLocations(frontLocation + "/index.html");
-        registry.addResourceHandler("/favicon.ico").addResourceLocations(frontLocation + "/favicon.ico");
-        registry.addResourceHandler("/static/**").addResourceLocations(frontLocation + "/static/");
-        registry.addResourceHandler("/velocity/**").addResourceLocations(frontLocation + "/velocity/");
-    }
+//    /**
+//     * 配置静态资源
+//     * @param registry
+//     */
+//    @Override
+//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//        String frontRoot;
+//        if (StringUtils.hasText(frontLocation)) {
+//            frontRoot = StringUtils.trimTrailingCharacter(frontLocation, '/');
+//        } else {
+//            String homeDir = SystemUtil.getBinPath();
+//            if ("/".equals(homeDir)) {
+//                homeDir = "";
+//            }
+//            frontRoot = homeDir + "/view";
+//        }
+//        log.info("前端资源目录：{}", frontRoot);
+//        String frontLocation = "file:" + frontRoot;
+//        registry.addResourceHandler("/index.html").addResourceLocations(frontLocation + "/index.html");
+//        registry.addResourceHandler("/favicon.ico").addResourceLocations(frontLocation + "/favicon.ico");
+//        registry.addResourceHandler("/static/**").addResourceLocations(frontLocation + "/static/");
+//        registry.addResourceHandler("/velocity/**").addResourceLocations(frontLocation + "/velocity/");
+//    }
 
 }

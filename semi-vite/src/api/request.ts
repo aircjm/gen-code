@@ -9,7 +9,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
 
 // 指定请求地址
 
-axios.defaults.baseURL = '/api';
+axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 
 // 添加请求拦截器
 axios.interceptors.request.use(
