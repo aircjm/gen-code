@@ -2,12 +2,11 @@ import {Button, Form, Notification, Space} from "@douyinfe/semi-ui";
 import React, {useEffect, useRef, useState} from "react";
 import {FormattedMessage} from "../../locale";
 import {useNavigate, useParams, useSearchParams} from "react-router-dom";
-import {datasourceAdd, datasourceDetail} from "../../api/api";
+import {datasourceSave, datasourceDetail} from "../../api/api";
 import {AxiosResponse} from "axios";
 
 function DatasourceEdit(props: any) {
     const navigate = useNavigate();
-
 
     const [loading, setLoading] = useState<boolean>(false)
     const [initValues, setInitValues] = useState({})
@@ -26,7 +25,11 @@ function DatasourceEdit(props: any) {
 
     const handleSubmit = (values: any) => {
         setLoading(true);
-        datasourceAdd(values).then((response: AxiosResponse) => {
+        debugger;
+        if (params.get("id")) {
+            values.id = params.get("id");
+        }
+        datasourceSave(values).then((response: AxiosResponse) => {
             // @ts-ignore
             if (parseInt(response.code) === 0) {
                 navigate('/datasource');

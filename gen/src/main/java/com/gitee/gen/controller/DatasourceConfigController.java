@@ -29,12 +29,6 @@ public class DatasourceConfigController {
     @Autowired
     private DatasourceConfigService datasourceConfigService;
 
-    @PostMapping("/add")
-    public Result add(@RequestBody DatasourceConfig datasourceConfig) {
-        datasourceConfigService.insert(datasourceConfig);
-        return Action.ok();
-    }
-
 
     @GetMapping("/detail")
     public Result detail(@RequestParam Integer id) {
@@ -47,6 +41,14 @@ public class DatasourceConfigController {
         List<DatasourceConfig> datasourceConfigList = datasourceConfigService.listAll();
         return Action.ok(datasourceConfigList);
     }
+
+
+    @PostMapping("/save")
+    public Result save(@RequestBody DatasourceConfig datasourceConfig) {
+        datasourceConfigService.save(datasourceConfig);
+        return Action.ok();
+    }
+
 
     @PostMapping("/update")
     public Result update(@RequestBody DatasourceConfig datasourceConfig) {

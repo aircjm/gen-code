@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author tanghc
@@ -25,13 +26,24 @@ public class DatasourceConfigService {
         return datasourceConfigMapper.listAll();
     }
 
-    public void insert(DatasourceConfig templateConfig) {
-        templateConfig.setIsDeleted(0);
-        DbType dbType = DbType.of(templateConfig.getDbType());
-        if (dbType != null) {
-            templateConfig.setDriverClass(dbType.getDriverClass());
+    public void save(DatasourceConfig templateConfig) {
+        if (Objects.nonNull(templateConfig.getId())) {
+            DatasourceConfig entity = datasourceConfigMapper.getById(templateConfig.getId());
+            entity.setDbName(templateConfig.getDbName());
+            entity.setHost(templateConfig.getHost());
+            entity.setPort(templateConfig.getPort());
+            entity.setDbType(templateConfig.getDbType());
+            templateConfig.setDriverClass(DbType.of(templateConfig.getDbType()).getDriverClass());
+            datasourceConfigMapper.update(entity);
+        } else {
+            templateConfig.setIsDeleted(0);
+            DbType dbType = DbType.of(templateConfig.getDbType());
+            if (dbType != null) {
+                templateConfig.setDriverClass(dbType.getDriverClass());
+            }
+            datasourceConfigMapper.insert(templateConfig);
         }
-        datasourceConfigMapper.insert(templateConfig);
+
     }
 
     public void update(DatasourceConfig templateConfig) {

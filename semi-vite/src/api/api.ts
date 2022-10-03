@@ -4,7 +4,7 @@ import {DataSourceAddRequest, UserState} from "../models/DataSource";
 export const APIURL = {
     datasource: {
         list: "/datasource/list",
-        add: "/datasource/add",
+        save: "/datasource/save",
         detail: "datasource/detail"
     }
 }
@@ -18,8 +18,8 @@ export const datasourceList = () => request<UserState>({
 
 
 
-export const datasourceAdd = (param: DataSourceAddRequest) => request({
-    url: APIURL.datasource.add,
+export const datasourceSave = (param: DataSourceAddRequest) => request({
+    url: APIURL.datasource.save,
     method: "post",
     data: param
 })
