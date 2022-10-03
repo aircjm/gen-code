@@ -33,7 +33,7 @@ public class DatasourceConfigService {
             entity.setHost(templateConfig.getHost());
             entity.setPort(templateConfig.getPort());
             entity.setDbType(templateConfig.getDbType());
-            templateConfig.setDriverClass(DbType.of(templateConfig.getDbType()).getDriverClass());
+            entity.setDriverClass(DbType.of(templateConfig.getDbType()).getDriverClass());
             datasourceConfigMapper.update(entity);
         } else {
             templateConfig.setIsDeleted(0);

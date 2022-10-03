@@ -25,7 +25,6 @@ function DatasourceEdit(props: any) {
 
     const handleSubmit = (values: any) => {
         setLoading(true);
-        debugger;
         if (params.get("id")) {
             values.id = params.get("id");
         }
