@@ -5,7 +5,7 @@ export const APIURL = {
     datasource: {
         list: "/datasource/list",
         save: "/datasource/save",
-        detail: "datasource/detail"
+        detail: "/datasource/detail"
     }
 }
 
