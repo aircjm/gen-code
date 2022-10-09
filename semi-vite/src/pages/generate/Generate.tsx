@@ -1,12 +1,12 @@
 import {
     Button,
     Checkbox,
-    CheckboxGroup,
+    CheckboxGroup, Col,
     Divider,
     List,
     Notification,
     Radio,
-    RadioGroup,
+    RadioGroup, Row,
     Select,
     Space
 } from "@douyinfe/semi-ui";
@@ -87,44 +87,55 @@ function Generate(props: any) {
         // todo
     };
 
-    // @ts-ignore
-    // @ts-ignore
     return (
-        <Space align="start" wrap spacing={20}>
-            <Button type={"primary"} onClick={handleSubmit}>生成</Button>
-            <Select placeholder='请选择数据源' style={{width: 180}} optionList={datasourceOptionList}
-                    onSelect={selectDatasource}></Select>
-            <div style={{display: 'flex'}}>
-                <div style={{display: 'flex', flexWrap: 'wrap'}}>
-                    <CheckboxGroup value={checkboxVal} onChange={(value: any) => setCV(value)}>
-                        <List
-                            dataSource={tableList}
-                            className='component-list-demo-booklist'
-                            split={false}
-                            size='small'
-                            style={{border: '1px solid var(--semi-color-border)', flexBasis: '100%', flexShrink: 0}}
-                            renderItem={item => <List.Item className='list-item'><Checkbox
-                                value={item.tableName}>{item.tableName}-{item.comment}</Checkbox></List.Item>}
-                        />
-                    </CheckboxGroup>
-                </div>
-                <Divider layout="vertical" margin='20px'/>
-                <div style={{display: 'flex', flexWrap: 'wrap'}}>
-                    <RadioGroup value={radioVal} onChange={(e) => setRV(e.target.value)}>
-                        <List
-                            className='component-list-demo-booklist'
-                            dataSource={tableList}
-                            split={false}
-                            size='small'
-                            style={{border: '1px solid var(--semi-color-border)', flexBasis: '100%', flexShrink: 0}}
-                            renderItem={item => <List.Item className='list-item'><Radio
-                                value={item.tableName}>{item.comment}</Radio></List.Item>}
-                        />
-                    </RadioGroup>
-                </div>
-            </div>
-
-        </Space>
+        <div className={"grid"}>
+            <Row>
+                <Button type={"primary"} onClick={handleSubmit}>生成</Button>
+                <Select placeholder='请选择数据源' style={{width: 180}} optionList={datasourceOptionList}
+                        onSelect={selectDatasource}></Select>
+            </Row>
+            <br/>
+            <Row>
+                <Col span={11}>
+                    <div className="col-content">
+                        <CheckboxGroup value={checkboxVal} onChange={(value: any) => setCV(value)}>
+                            <List
+                                dataSource={tableList}
+                                className='component-list-demo-booklist'
+                                split={false}
+                                size='small'
+                                style={{
+                                    border: '1px solid var(--semi-color-border)',
+                                    flexBasis: '100%',
+                                    flexShrink: 0
+                                }}
+                                renderItem={item => <List.Item className='list-item'><Checkbox
+                                    value={item.tableName}>{item.tableName}-{item.comment}</Checkbox></List.Item>}
+                            />
+                        </CheckboxGroup>
+                    </div>
+                </Col>
+                <Col span={11} offset={2}>
+                    <div className="col-content">
+                        <RadioGroup value={radioVal} onChange={(e) => setRV(e.target.value)}>
+                            <List
+                                className='component-list-demo-booklist'
+                                dataSource={tableList}
+                                split={false}
+                                size='small'
+                                style={{
+                                    border: '1px solid var(--semi-color-border)',
+                                    flexBasis: '100%',
+                                    flexShrink: 0
+                                }}
+                                renderItem={item => <List.Item className='list-item'><Radio
+                                    value={item.tableName}>{item.comment}</Radio></List.Item>}
+                            />
+                        </RadioGroup>
+                    </div>
+                </Col>
+            </Row>
+        </div>
     );
 }
 
