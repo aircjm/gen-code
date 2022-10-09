@@ -2,7 +2,7 @@ import {Button, Form, Notification, Space} from "@douyinfe/semi-ui";
 import React, {useEffect, useRef, useState} from "react";
 import {FormattedMessage} from "../../locale";
 import {useNavigate, useParams, useSearchParams} from "react-router-dom";
-import {datasourceSave, datasourceDetail} from "../../api/api";
+import {datasourceSave, datasourceDetail} from "../../api/datasource";
 import {AxiosResponse} from "axios";
 
 function DatasourceEdit(props: any) {

@@ -11,6 +11,7 @@ import {useMemo} from "react";
 import {Locales, messages} from "./locale";
 import ProjectEdit from "./pages/project/ProjectEdit";
 import ProjectList from "./pages/project/ProjectList";
+import Generate from "./pages/generate/Generate";
 
 function Nav() {
     return (
@@ -18,7 +19,7 @@ function Nav() {
             <Button><Link to="/">Home</Link></Button>
             <Button><Link to="/about">About</Link></Button>
             <Button><Link to="/datasource">DataSource</Link></Button>
-            <Button><Link to="/project">DataSource</Link></Button>
+            <Button><Link to="/project">Project</Link></Button>
             <Button><Link to="/article/1">Article</Link></Button>
             <Button><Link to="/contact">Contact</Link></Button>
         </div>
@@ -124,6 +125,7 @@ function App() {
                             <Route path="/datasource/edit" element={<DatasourceEdit/>}></Route>
                             <Route path="/project" element={<ProjectList/>}></Route>
                             <Route path="/project/edit" element={<ProjectEdit/>}></Route>
+                            <Route path="/project/generate" element={<Generate/>}></Route>
                             <Route path="/about" element={<About/>}/>
                             <Route path="/contact" element={<Contact/>}>
                                 <Route index element={<ContactIndex/>}></Route>

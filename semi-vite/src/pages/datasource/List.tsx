@@ -1,7 +1,7 @@
 import {Button, Col, Row, Table} from "@douyinfe/semi-ui";
 import React, {useEffect, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
-import {datasourceList} from "../../api/api";
+import {datasourceList} from "../../api/datasource";
 import {AxiosResponse} from "axios";
 import {IconEdit, IconMore, IconPlus} from "@douyinfe/semi-icons";
 

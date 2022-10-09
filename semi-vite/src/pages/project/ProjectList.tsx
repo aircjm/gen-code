@@ -41,6 +41,9 @@ function ProjectList() {
                         <Button icon={<IconEdit />} theme='borderless' onClick={() => {
                             navigate("/project/edit"+"?id=" +record.id)
                         }} />
+                        <Button icon={<IconEdit />} theme='borderless' onClick={() => {
+                            navigate("/project/generate"+"?id=" +record.id)
+                        }}>生成</Button>
                         <Button icon={ <IconMore />} theme='borderless' onClick={() => alert(record.id)} />
                     </div>
                 )
