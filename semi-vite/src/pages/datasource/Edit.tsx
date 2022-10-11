@@ -4,6 +4,7 @@ import {FormattedMessage} from "../../locale";
 import {useNavigate, useParams, useSearchParams} from "react-router-dom";
 import {datasourceSave, datasourceDetail} from "../../api/datasource";
 import {AxiosResponse} from "axios";
+import {ResponseData} from "../../models";
 
 function DatasourceEdit(props: any) {
     const navigate = useNavigate();
@@ -28,9 +29,9 @@ function DatasourceEdit(props: any) {
         if (params.get("id")) {
             values.id = params.get("id");
         }
-        datasourceSave(values).then((response: AxiosResponse) => {
-            // @ts-ignore
-            if (parseInt(response.code) === 0) {
+        datasourceSave(values).then((response: ResponseData<any>) => {
+            debugger
+            if (response.code === 0) {
                 navigate('/datasource');
                 setLoading(false);
             }

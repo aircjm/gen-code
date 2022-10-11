@@ -4,18 +4,20 @@ import {Link, useNavigate} from "react-router-dom";
 import {datasourceList} from "../../api/datasource";
 import {AxiosResponse} from "axios";
 import {IconEdit, IconMore, IconPlus} from "@douyinfe/semi-icons";
+import {DataSourceDetail} from "../../models/DataSource";
+import {ResponseData} from "../../models";
 
 
 function Datasource() {
 
-    const [dataSource, setData] = useState([]);
+    const [dataSource, setData] = useState<Array<DataSourceDetail>>([]);
     const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
 
     useEffect(() => {
         setLoading(true);
-        datasourceList().then((response: AxiosResponse) => {
+        datasourceList().then((response: ResponseData<Array<DataSourceDetail>>) => {
             setData(response.data)
             setLoading(false);
         });

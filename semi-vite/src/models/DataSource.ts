@@ -11,6 +11,19 @@ export type DataSourceAddRequest = {
 }
 
 
+export type DataSourceDetail = {
+    id: number
+    dbType: number
+    desc: string
+    host: string
+    dbName: string,
+    password: string
+    port: number
+    url: string
+    username: string
+}
+
+
 
 export interface UserState {
     id: number;

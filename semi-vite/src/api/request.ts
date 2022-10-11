@@ -70,7 +70,7 @@ axios.interceptors.response.use(
 );
 
 // 统一发起请求的函数
-export function request<T>(options: AxiosRequestConfig) {
+export function request<T>(options: AxiosRequestConfig): Promise<any> {
     return axios.request<T>(options);
 }
 

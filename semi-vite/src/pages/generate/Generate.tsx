@@ -13,11 +13,12 @@ import {
 import React, {useEffect, useState} from "react";
 import {AxiosResponse} from "axios";
 import {datasourceList} from "../../api/datasource";
+import {ResponseData} from "../../models";
 
 function Generate(props: any) {
 
     const [loading, setLoading] = useState<boolean>(false)
-    const [datasourceOptionList, setDatasourceOptionList] = useState([])
+    const [datasourceOptionList, setDatasourceOptionList] = useState<Array<any>>([])
     const [tableList, setTableList] = useState([{
         "schema": null,
         "tableName": "zhb_grid_seek_help",
@@ -48,7 +49,7 @@ function Generate(props: any) {
     const [radioVal, setRV] = useState();
 
     useEffect(() => {
-        datasourceList().then((response: AxiosResponse) => {
+        datasourceList().then((response: ResponseData<Array<any>>) => {
             setDatasourceOptionList(response.data.map((item: any) => {
                 return {
                     label: item.host + " " + item.dbName,

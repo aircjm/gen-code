@@ -1,5 +1,8 @@
 import {request} from "./request";
-import {DataSourceAddRequest, ProjectAddRequest, UserState} from "../models/DataSource";
+import {ProjectAddRequest, UserState} from "../models/DataSource";
+import {AxiosResponse} from "axios";
+import {ProjectDetail} from "../models/Project";
+import {ResponseData} from "../models";
 
 export const APIURL = {
     project: {
@@ -10,21 +13,20 @@ export const APIURL = {
 }
 
 
-export const projectList = () => request<UserState>({
+export const projectList = (): Promise<ResponseData<Array<ProjectDetail>>> => request<UserState>({
     url: APIURL.project.list,
     method: "post",
     data: {}
 })
 
 
-
-export const projectSave = (param: ProjectAddRequest) => request({
+export const projectSave = (param: ProjectAddRequest): Promise<ResponseData<any>> => request({
     url: APIURL.project.save,
     method: "post",
     data: param
 })
 
-export const projectDetail = (id: any) => request({
+export const projectDetail = (id: any): Promise<any> => request({
     url: APIURL.project.detail,
     method: "get",
     params: {

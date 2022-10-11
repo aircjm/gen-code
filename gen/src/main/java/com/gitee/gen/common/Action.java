@@ -5,8 +5,8 @@ package com.gitee.gen.common;
  */
 public class Action {
 
-    private static final String CODE_SUCCESS = "0";
-    private static final String CODE_ERROR = "100";
+    private static final Integer CODE_SUCCESS = 0;
+    private static final Integer CODE_ERROR = 100;
 
     private static Result ok = new Result();
     static {
