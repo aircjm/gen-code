@@ -1,6 +1,5 @@
 import {request} from "./request";
-import {DataSourceAddRequest, DataSourceDetail, UserState} from "../models/DataSource";
-import {AxiosResponse} from "axios";
+import {DataSourceAddRequest, DataSourceDetail} from "../models/DataSource";
 import {ResponseData} from "../models";
 
 export const APIURL = {
@@ -12,7 +11,7 @@ export const APIURL = {
 }
 
 
-export const datasourceList = ():Promise<ResponseData<Array<DataSourceDetail>>> => request<UserState>({
+export const datasourceList = ():Promise<ResponseData<Array<DataSourceDetail>>> => request({
     url: APIURL.datasource.list,
     method: "post",
     data: {}

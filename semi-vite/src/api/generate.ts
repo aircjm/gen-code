@@ -1,5 +1,5 @@
 import {request} from "./request";
-import {DataSourceAddRequest, ProjectAddRequest, UserState} from "../models/DataSource";
+import {ProjectAddRequest} from "../models/DataSource";
 
 export const APIURL = {
     generate: {
@@ -10,7 +10,7 @@ export const APIURL = {
 }
 
 
-export const generateList = () => request<UserState>({
+export const generateList = () => request({
     url: APIURL.generate.list,
     method: "post",
     data: {}
