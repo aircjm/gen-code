@@ -5,9 +5,11 @@ import {IconEdit, IconMore, IconPlus} from "@douyinfe/semi-icons";
 import {projectList} from "../../api/project";
 import {ResponseData} from "../../models";
 import {ProjectDetail} from "../../models/Project";
+import {FormattedMessage} from "../../locale";
 
 
 function ProjectList() {
+
 
     const [dataSource, setData] = useState<Array<ProjectDetail>>([]);
     const [loading, setLoading] = useState(false);
@@ -61,7 +63,9 @@ function ProjectList() {
             <h2>项目管理</h2>
             <Row>
                 <Col span={4} offset={20}>
-                    <Button icon={<IconPlus />} type={"primary"}><Link to="edit">新增</Link></Button>
+                    <Button icon={<IconPlus />} type="tertiary" onClick={() => navigate("edit")}>
+                        <FormattedMessage id={"add"}/>
+                    </Button>
                 </Col>
             </Row>
             <Row>

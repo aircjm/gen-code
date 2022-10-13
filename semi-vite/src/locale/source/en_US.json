@@ -13,6 +13,7 @@
   "hello": "hello",
   "layout.header": "Header",
   "submit": "Submit",
+  "add": "Add",
   "test1": "Hello, let's learn how to use React-Intl",
   "test2": "How {n, number, ::currency/USD} is displayed in your selected language",
   "test3": "This is how {n, number} is formatted in the selected locale",
