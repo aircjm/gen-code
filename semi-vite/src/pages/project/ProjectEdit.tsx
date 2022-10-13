@@ -1,9 +1,9 @@
 import {Button, Form, Notification, Space} from "@douyinfe/semi-ui";
 import React, {useEffect, useRef, useState} from "react";
 import {FormattedMessage} from "../../locale";
-import {useNavigate, useParams, useSearchParams} from "react-router-dom";
-import {AxiosResponse} from "axios";
+import {useNavigate, useSearchParams} from "react-router-dom";
 import {projectDetail, projectSave} from "../../api/project";
+import {ResponseData} from "../../models";
 
 function ProjectEdit(props: any) {
     const navigate = useNavigate();
@@ -27,7 +27,7 @@ function ProjectEdit(props: any) {
         if (params.get("id")) {
             values.id = params.get("id");
         }
-        projectSave(values).then((response: AxiosResponse) => {
+        projectSave(values).then((response: ResponseData<any>) => {
             // @ts-ignore
             if (parseInt(response.code) === 0) {
                 navigate('/project');

@@ -55,14 +55,6 @@ function Datasource() {
                     </div>
                 )
         }
-        // {
-        //     title: '更新日期',
-        //     dataIndex: 'updateTime',
-        //     sorter: (a: any, b: any) => a.updateTime - b.updateTime > 0 ? 1 : -1,
-        //     render: (value: any) => {
-        //         return format(new Date(value), 'yyyy-MM-dd');
-        //     }
-        // }
     ];
 
 

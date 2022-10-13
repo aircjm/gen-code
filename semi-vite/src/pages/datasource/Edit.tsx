@@ -30,7 +30,6 @@ function DatasourceEdit(props: any) {
             values.id = params.get("id");
         }
         datasourceSave(values).then((response: ResponseData<any>) => {
-            debugger
             if (response.code === 0) {
                 navigate('/datasource');
                 setLoading(false);

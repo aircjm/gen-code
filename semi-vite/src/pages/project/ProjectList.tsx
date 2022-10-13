@@ -1,21 +1,22 @@
 import {Button, Col, Row, Table} from "@douyinfe/semi-ui";
 import React, {useEffect, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
-import {AxiosResponse} from "axios";
 import {IconEdit, IconMore, IconPlus} from "@douyinfe/semi-icons";
 import {projectList} from "../../api/project";
+import {ResponseData} from "../../models";
+import {ProjectDetail} from "../../models/Project";
 
 
 function ProjectList() {
 
-    const [dataSource, setData] = useState([]);
+    const [dataSource, setData] = useState<Array<ProjectDetail>>([]);
     const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
 
     useEffect(() => {
         setLoading(true);
-        projectList().then((response: AxiosResponse) => {
+        projectList().then((response: ResponseData<Array<ProjectDetail>>) => {
             setData(response.data)
             setLoading(false);
         });
