@@ -25,6 +25,11 @@ function Datasource() {
 
     const columns = [
         {
+            title: 'id',
+            dataIndex: 'id',
+            width: 100
+        },
+        {
             title: '数据库名称',
             dataIndex: 'dbName',
             width: 400

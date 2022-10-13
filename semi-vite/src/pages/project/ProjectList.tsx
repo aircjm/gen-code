@@ -27,6 +27,11 @@ function ProjectList() {
 
     const columns = [
         {
+            title: 'id',
+            dataIndex: 'id',
+            width: 100
+        },
+        {
             title: '项目名称',
             dataIndex: 'name',
             width: 400
