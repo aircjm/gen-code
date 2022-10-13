@@ -7,7 +7,7 @@ export type ProjectAddRequest = {
 
 
 export type ProjectDetail = {
-    id: number;
+    id: string;
     name: string
     projectName: string
 }

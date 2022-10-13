@@ -53,11 +53,6 @@ function ProjectList() {
         }
     ];
 
-
-    const handlePageChange = (page: any) => {
-        console.log("分页参数请求修改")
-    };
-
     return (
         <div className="grid">
             <h2>项目管理</h2>
