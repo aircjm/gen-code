@@ -4,6 +4,7 @@ import {FormattedMessage} from "../../locale";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {projectDetail, projectSave} from "../../api/project";
 import {ResponseData} from "../../models";
+import {ProjectDetail} from "../../models/Project";
 
 function ProjectEdit(props: any) {
     const navigate = useNavigate();
@@ -15,7 +16,7 @@ function ProjectEdit(props: any) {
 
     useEffect(() => {
         if (params.get("id")) {
-            projectDetail(params.get("id")).then(result => {
+            projectDetail(params.get("id")).then((result :ResponseData<ProjectDetail>) => {
                 formApi.current.setValues(result.data)
             });
         }

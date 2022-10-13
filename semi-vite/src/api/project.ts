@@ -25,7 +25,7 @@ export const projectSave = (param: ProjectAddRequest): Promise<ResponseData<any>
     data: param
 })
 
-export const projectDetail = (id: any): Promise<any> => request({
+export const projectDetail = (id: any): Promise<ResponseData<ProjectDetail>> => request({
     url: APIURL.project.detail,
     method: "get",
     params: {
