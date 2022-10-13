@@ -26,7 +26,7 @@ function ProjectList() {
     const columns = [
         {
             title: '项目名称',
-            dataIndex: 'dbName',
+            dataIndex: 'name',
             width: 400
         },
         {

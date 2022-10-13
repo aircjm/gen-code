@@ -14,50 +14,25 @@ import React, {useEffect, useState} from "react";
 import {AxiosResponse} from "axios";
 import {datasourceList} from "../../api/datasource";
 import {ResponseData} from "../../models";
+import {DataSourceDetail} from "../../models/DataSource";
 
 function Generate(props: any) {
 
     const [loading, setLoading] = useState<boolean>(false)
     const [datasourceOptionList, setDatasourceOptionList] = useState<Array<any>>([])
-    const [tableList, setTableList] = useState([{
-        "schema": null,
-        "tableName": "zhb_grid_seek_help",
-        "comment": "代办服务",
-        "columnDefinitions": [],
-        "csharpColumnDefinitions": [],
-        "hasDateColumn": false,
-        "hasDateField": false,
-        "hasLocalDateField": false,
-        "hasLocalDateTimeField": false,
-        "hasBigDecimalField": false,
-        "hasJsonbField": false
-    }, {
-        "schema": null,
-        "tableName": "zhb_grid_volunteer_manange",
-        "comment": "志愿者申请",
-        "columnDefinitions": [],
-        "csharpColumnDefinitions": [],
-        "hasDateColumn": false,
-        "hasDateField": false,
-        "hasLocalDateField": false,
-        "hasLocalDateTimeField": false,
-        "hasBigDecimalField": false,
-        "hasJsonbField": false
-    }]);
+    const [tableList, setTableList] = useState<Array<any>>([]);
 
     const [checkboxVal, setCV] = useState([]);
     const [radioVal, setRV] = useState();
 
     useEffect(() => {
-        datasourceList().then((response: ResponseData<Array<any>>) => {
-            setDatasourceOptionList(response.data.map((item: any) => {
+        datasourceList().then((response: ResponseData<Array<DataSourceDetail>>) => {
+            setDatasourceOptionList(response.data.map((item: DataSourceDetail) => {
                 return {
                     label: item.host + " " + item.dbName,
                     value: item.id
                 };
             }));
-
-            setLoading(false);
         });
     }, [])
 
@@ -92,7 +67,7 @@ function Generate(props: any) {
         <div className={"grid"}>
             <Row>
                 <Button type={"primary"} onClick={handleSubmit}>生成</Button>
-                <Select placeholder='请选择数据源' style={{width: 180}} optionList={datasourceOptionList}
+                <Select placeholder='请选择数据源'  style={{width: 180}} optionList={datasourceOptionList}
                         onSelect={selectDatasource}></Select>
             </Row>
             <br/>
@@ -101,8 +76,8 @@ function Generate(props: any) {
                     <div className="col-content">
                         <CheckboxGroup value={checkboxVal} onChange={(value: any) => setCV(value)}>
                             <List
+                                loading={loading}
                                 dataSource={tableList}
-                                className='component-list-demo-booklist'
                                 split={false}
                                 size='small'
                                 style={{
@@ -120,7 +95,6 @@ function Generate(props: any) {
                     <div className="col-content">
                         <RadioGroup value={radioVal} onChange={(e) => setRV(e.target.value)}>
                             <List
-                                className='component-list-demo-booklist'
                                 dataSource={tableList}
                                 split={false}
                                 size='small'

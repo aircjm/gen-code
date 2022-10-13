@@ -1,6 +1,8 @@
 package com.gitee.gen.entity;
 
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.Objects;
@@ -10,6 +12,8 @@ import java.util.Objects;
  * @author aircjm
  */
 public class Project {
+
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     @ApiModelProperty("项目名")

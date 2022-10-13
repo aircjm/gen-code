@@ -117,7 +117,6 @@ function App() {
                 <BrowserRouter>
                     <div className="App">
                         <div>
-                            <h1>Header!</h1>
                             <Nav/>
                         </div>
                         <Routes>

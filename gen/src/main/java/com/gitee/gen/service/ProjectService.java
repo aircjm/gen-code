@@ -17,11 +17,16 @@ public class ProjectService extends ServiceImpl<ProjectMapper, Project> {
 
 
     public void save(ProjectUpdateVo updateVo) {
-        // todo
         if (Objects.nonNull(updateVo.getId())) {
-
+            Project project = getById(updateVo.getId());
+            if (Objects.nonNull(project)) {
+                project.setName(updateVo.getName());
+                project.setPackageName(updateVo.getPackageName());
+                updateById(project);
+            }
         } else {
             Project project = BeanUtil.copyProperties(updateVo, Project.class);
+            project.setIsDeleted(0);
             save(project);
         }
 
