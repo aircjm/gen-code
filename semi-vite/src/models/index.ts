@@ -9,3 +9,8 @@ export interface ResponseData<T> {
     data: T;
     msg: string;
 }
+
+
+export type IdRequest = {
+    id: number;
+}

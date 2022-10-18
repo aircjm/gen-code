@@ -1,8 +1,8 @@
 import {Button, Col, Row, Table} from "@douyinfe/semi-ui";
 import React, {useEffect, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
-import {datasourceList} from "../../api/datasource";
-import {IconEdit, IconMore, IconPlus} from "@douyinfe/semi-icons";
+import {datasourceDelete, datasourceList} from "../../api/datasource";
+import {IconDelete, IconEdit, IconMore, IconPlus} from "@douyinfe/semi-icons";
 import {DataSourceDetail} from "../../models/DataSource";
 import {ResponseData} from "../../models";
 
@@ -14,13 +14,16 @@ function Datasource() {
 
     const navigate = useNavigate();
 
-    useEffect(() => {
+    function loadingList() {
         setLoading(true);
         datasourceList().then((response: ResponseData<Array<DataSourceDetail>>) => {
             setData(response.data)
             setLoading(false);
         });
+    }
 
+    useEffect(() => {
+        loadingList();
     }, [])
 
     const columns = [
@@ -56,14 +59,25 @@ function Datasource() {
                             navigate("/datasource/edit"+"?id=" +record.id)
                         }} />
                         <Button icon={ <IconMore />} theme='borderless' onClick={() => alert(record.id)} />
+                        <Button icon={ <IconDelete />} theme='borderless' onClick={() => handleDelete(record.id)} />
                     </div>
                 )
         }
     ];
 
 
+
+
     const handlePageChange = (page: any) => {
         console.log("分页参数请求修改")
+    };
+
+
+
+    const handleDelete = (id: any) => {
+        datasourceDelete({id: id}).then((response) => {
+            loadingList();
+        })
     };
 
     return (

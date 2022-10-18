@@ -1,11 +1,12 @@
 import {request} from "./request";
 import {DataSourceAddRequest, DataSourceDetail} from "../models/DataSource";
-import {ResponseData} from "../models";
+import {IdRequest, ResponseData} from "../models";
 
 export const APIURL = {
     datasource: {
         list: "/datasource/list",
         save: "/datasource/save",
+        delete: "/datasource/del",
         detail: "/datasource/detail"
     }
 }
@@ -17,6 +18,12 @@ export const datasourceList = ():Promise<ResponseData<Array<DataSourceDetail>>> 
     data: {}
 })
 
+
+export const datasourceDelete = (param: IdRequest): Promise<ResponseData<void>> => request({
+    url: APIURL.datasource.delete,
+    method: "post",
+    data: param
+})
 
 
 export const datasourceSave = (param: DataSourceAddRequest): Promise<ResponseData<void>> => request({
