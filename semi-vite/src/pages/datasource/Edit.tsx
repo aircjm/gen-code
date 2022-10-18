@@ -42,10 +42,9 @@ function DatasourceEdit(props: any) {
     return (
         <Space align="start" wrap spacing={20}>
             <Form onSubmit={values => handleSubmit(values)} getFormApi={api => formApi.current = api}>
-                <>
                     <Form.Input field='dbName' label='名称' style={{width: '100%'}}></Form.Input>
                     <Form.TextArea field='desc' label='描述' style={{width: '100%'}}></Form.TextArea>
-                    <Form.Input field='url' label='jdbcUrl链接' style={{width: '100%'}}></Form.Input>
+                    <Form.Input field='url' label='jdbcUrl链接' style={{width: '100%'}} disabled={true}></Form.Input>
                     <Form.Select field='dbType' label='dbType' style={{width: '100%'}}>
                         <Form.Select.Option label={"MySQL"} value={1}></Form.Select.Option>
                         <Form.Select.Option label={"Oracle"} value={2}></Form.Select.Option>
@@ -62,7 +61,6 @@ function DatasourceEdit(props: any) {
                     <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
                         <Button htmlType='submit' type="tertiary" loading={loading}> <FormattedMessage id={"submit"}/></Button>
                     </div>
-                </>
             </Form>
         </Space>
     );
