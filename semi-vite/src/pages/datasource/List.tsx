@@ -5,6 +5,7 @@ import {datasourceDelete, datasourceList} from "../../api/datasource";
 import {IconDelete, IconEdit, IconMore, IconPlus} from "@douyinfe/semi-icons";
 import {DataSourceDetail} from "../../models/DataSource";
 import {ResponseData} from "../../models";
+import {FormattedMessage} from "../../locale";
 
 
 function Datasource() {
@@ -85,7 +86,10 @@ function Datasource() {
             <h2>数据源管理</h2>
             <Row>
                 <Col span={4} offset={20}>
-                    <Button icon={<IconPlus />} type={"primary"}><Link to="edit">新增</Link></Button></Col>
+                    <Button icon={<IconPlus />} type="tertiary" onClick={() => navigate("edit")}>
+                        <FormattedMessage id={"add"}/>
+                    </Button>
+                </Col>
             </Row>
             <Row>
                 <Table columns={columns} dataSource={dataSource} loading={loading}></Table>
