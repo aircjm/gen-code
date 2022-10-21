@@ -67,23 +67,25 @@ function App() {
                         <div>
                             <Nav/>
                         </div>
-                        <Routes>
-                            <Route path="/" element={<Home/>}/>
-                            <Route path="/datasource" element={<Datasource/>}></Route>
-                            <Route path="/datasource/edit" element={<DatasourceEdit/>}></Route>
-                            <Route path="/project" element={<ProjectList/>}></Route>
-                            <Route path="/project/edit" element={<ProjectEdit/>}></Route>
-                            <Route path="/project/generate" element={<Generate/>}></Route>
-                            <Route path="/about" element={<About/>}/>
-                            {/*<Route path="/contact" element={<Contact/>}>*/}
-                            {/*    <Route index element={<ContactIndex/>}></Route>*/}
-                            {/*    <Route path="address" element={<Address/>}></Route>*/}
-                            {/*    <Route path="*" element={<NotFound/>}/>*/}
-                            {/*    <Route path="phone" element={<Phone/>}></Route>*/}
-                            {/*</Route>*/}
-                            {/*<Route path="/article/:id/*" element={<Article/>}/>*/}
-                            <Route path="*" element={<NotFound/>}/>
-                        </Routes>
+                        <div className={"container"}>
+                            <Routes>
+                                <Route path="/" element={<Home/>}/>
+                                <Route path="/datasource" element={<Datasource/>}></Route>
+                                <Route path="/datasource/edit" element={<DatasourceEdit/>}></Route>
+                                <Route path="/project" element={<ProjectList/>}></Route>
+                                <Route path="/project/edit" element={<ProjectEdit/>}></Route>
+                                <Route path="/project/generate" element={<Generate/>}></Route>
+                                <Route path="/about" element={<About/>}/>
+                                {/*<Route path="/contact" element={<Contact/>}>*/}
+                                {/*    <Route index element={<ContactIndex/>}></Route>*/}
+                                {/*    <Route path="address" element={<Address/>}></Route>*/}
+                                {/*    <Route path="*" element={<NotFound/>}/>*/}
+                                {/*    <Route path="phone" element={<Phone/>}></Route>*/}
+                                {/*</Route>*/}
+                                {/*<Route path="/article/:id/*" element={<Article/>}/>*/}
+                                <Route path="*" element={<NotFound/>}/>
+                            </Routes>
+                        </div>
                         <div>
                             <h1>Footer!</h1>
                         </div>
