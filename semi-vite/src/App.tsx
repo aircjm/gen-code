@@ -12,6 +12,7 @@ import {Locales, messages} from "./locale";
 import ProjectEdit from "./pages/project/ProjectEdit";
 import ProjectList from "./pages/project/ProjectList";
 import Generate from "./pages/generate/Generate";
+import 'styles/globals.scss';
 
 function Nav() {
     return (
